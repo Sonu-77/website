@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { navItems, identity } from "@/lib/data";
 import { scrollToSection } from "@/lib/site";
 import Image from "next/image";
+import logo from "@/public/assets/logo.png";
 
 export default function Navbar() {
   const [active, setActive] = useState<string>("home");
@@ -77,10 +78,8 @@ export default function Navbar() {
             aria-label="Go to home section"
           >
             <Image
-              src="/assets/logo.png"
+              src={logo}
               alt="Sonu Kachhap"
-              width={150}
-              height={68}
               priority
               className="h-9 w-auto object-contain sm:h-10"
             />

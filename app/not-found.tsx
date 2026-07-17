@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ArrowLeft, Compass } from 'lucide-react';
 import Background from '@/components/Background';
 import { identity } from '@/lib/data';
+import logo from '@/public/assets/logo.png';
 
 export const metadata: Metadata = {
   title: `Page Not Found | ${identity.name}`,
@@ -22,10 +23,8 @@ export default function NotFound() {
           aria-label="Go to home page"
         >
           <Image
-            src="/assets/logo.png"
+            src={logo}
             alt={identity.name}
-            width={150}
-            height={68}
             priority
             className="h-9 w-auto object-contain"
           />
