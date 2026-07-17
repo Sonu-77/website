@@ -444,40 +444,54 @@ export default function Contact() {
                   )}
                   <motion.div
                     {...fieldReveal(7)}
-                    className="flex flex-wrap gap-3 sm:col-span-2"
+                    className="grid grid-cols-2 gap-3 sm:col-span-2 sm:flex sm:flex-wrap sm:items-center"
                   >
-                    <Magnetic>
-                      <button
-                        type="submit"
-                        disabled={sending}
-                        className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
-                      >
-                        {sending ? (
-                          <>
-                            <span
-                              aria-hidden
-                              className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
-                            />
-                            Sending...
-                          </>
-                        ) : (
-                          <>
-                            <Send size={15} />
-                            Send Project Details
-                          </>
-                        )}
-                      </button>
-                    </Magnetic>
-                    <a href={`mailto:${identity.email}`} className="btn-ghost">
-                      <Mail size={15} /> Email Me
+                    {/* Full-width submit button on mobile */}
+                    <div className="col-span-2 w-full [&>*]:w-full sm:w-auto sm:[&>*]:w-auto">
+                      <Magnetic>
+                        <button
+                          type="submit"
+                          disabled={sending}
+                          className="btn-primary w-full justify-center disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                        >
+                          {sending ? (
+                            <>
+                              <span
+                                aria-hidden
+                                className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
+                              />
+                              Sending ...
+                            </>
+                          ) : (
+                            <>
+                              <Send size={15} />
+                              Let’s Work Together
+                            </>
+                          )}
+                        </button>
+                      </Magnetic>
+                    </div>
+
+                    {/* Side-by-side on mobile */}
+                    <a
+                      href={`mailto:${identity.email}`}
+                      className="btn-ghost w-full justify-center whitespace-nowrap sm:w-auto"
+                    >
+                      <Mail size={15} />
+                      Email Me
                     </a>
+
                     <a
                       href={identity.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-ghost"
+                      className="btn-ghost w-full justify-center whitespace-nowrap sm:w-auto"
                     >
-                      <Linkedin size={15} /> Connect on LinkedIn
+                      <Linkedin size={15} />
+                      <span className="sm:hidden">LinkedIn</span>
+                      <span className="hidden sm:inline">
+                        Connect on LinkedIn
+                      </span>
                     </a>
                   </motion.div>
                 </motion.form>

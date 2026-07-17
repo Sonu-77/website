@@ -100,7 +100,7 @@ export default function Experience() {
               ))}
             </ul>
 
-            <div data-shared-anchor="experience" className="absolute right-6 top-6 h-1 w-1" aria-hidden />
+            <div data-shared-anchor="experience" className="pointer-events-none absolute right-6 top-6 hidden h-1 w-1 lg:block" aria-hidden />
           </motion.article>
         </div>
       </div>

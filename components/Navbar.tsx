@@ -25,6 +25,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock background scroll while the mobile menu is open
+  useEffect(() => {
+    if (!menuOpen) return;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+    };
+  }, [menuOpen]);
+
   // Active-section highlighting
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -151,7 +161,7 @@ export default function Navbar() {
               transition={{ duration: 0.28 }}
               className="overflow-hidden md:hidden"
             >
-              <ul className="space-y-1 px-4 pb-4 pt-2">
+              <ul className="max-h-[calc(100dvh-7rem)] space-y-1 overflow-y-auto px-4 pb-4 pt-2">
                 {navItems.map(({ id, label }, i) => (
                   <motion.li
                     key={id}
@@ -176,13 +186,13 @@ export default function Navbar() {
                   >
                     Hire Me
                   </button>
-                  <a
+                  {/* <a
                     href={identity.resumeUrl}
                     download
                     className="btn-ghost flex-1"
                   >
                     <Download size={15} /> Résumé
-                  </a>
+                  </a> */}
                 </li>
               </ul>
             </motion.div>

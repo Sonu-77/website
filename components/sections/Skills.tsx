@@ -73,11 +73,13 @@ function SkillOrbit() {
       </motion.div>
 
       {/* Hover readout */}
-      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-center">
-        <p className="font-mono text-xs text-cyan">
-          {hovered ? `${hovered} — used in production projects` : 'hover a technology'}
-        </p>
-      </div>
+<div className="absolute -bottom-8 left-1/2 w-max -translate-x-1/2 text-center">
+  <p className="whitespace-nowrap font-mono text-xs text-cyan">
+    {hovered
+      ? `${hovered} — used in production projects`
+      : 'hover a technology'}
+  </p>
+</div>
     </div>
   );
 }
@@ -93,7 +95,7 @@ export default function Skills() {
 
         <div className="relative grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <SkillOrbit />
-          <div data-shared-anchor="skills" className="absolute right-8 top-0 h-1 w-1" aria-hidden />
+          <div data-shared-anchor="skills" className="pointer-events-none absolute right-8 top-0 hidden h-1 w-1 lg:block" aria-hidden />
 
           {/* Category groups — the accessible, always-present representation.
               On mobile this doubles as the animated grid replacing the orbit. */}
