@@ -3,7 +3,7 @@ const nextConfig = {
   output: "export",
   reactStrictMode: true,
   images: {
-    formats: ["image/avif", "image/webp"],
+    unoptimized: true,
   },
   transpilePackages: ["three"],
 };
