@@ -1,0 +1,41 @@
+import Background from '@/components/Background';
+import CustomCursor from '@/components/CustomCursor';
+import Loader from '@/components/Loader';
+import Navbar from '@/components/Navbar';
+import SharedElement from '@/components/SharedElement';
+import Footer, { ScrollProgress } from '@/components/Footer';
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import Skills from '@/components/sections/Skills';
+import Experience from '@/components/sections/Experience';
+import Projects from '@/components/sections/Projects';
+import Services from '@/components/sections/Services';
+import Process from '@/components/sections/Process';
+import Contact, { ClientCTA } from '@/components/sections/Contact';
+
+export default function Home() {
+  return (
+    <>
+      <Loader />
+      <ScrollProgress />
+      <Background />
+      <CustomCursor />
+      <Navbar />
+
+      <main id="main" className="relative">
+        <SharedElement />
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Services />
+        <Process />
+        <ClientCTA />
+        <Contact />
+      </main>
+
+      <Footer />
+    </>
+  );
+}

@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Design tokens — brief palette. Dark is the default theme.
+   --------------------------------------------------------------------------- */
+:root,
+.dark {
+  --bg: 6 8 22;        /* #060816 */
+  --bg-2: 11 16 32;    /* #0B1020 */
+  --ink: 248 250 252;  /* #F8FAFC */
+  --ink-2: 148 163 184;/* #94A3B8 */
+  --line: 148 163 184; /* borders derive from slate, used at low alpha */
+  --glass: 255 255 255;
+  color-scheme: dark;
+}
+
+.light {
+  --bg: 245 248 255;
+  --bg-2: 255 255 255;
+  --ink: 15 23 42;
+  --ink-2: 71 85 105;
+  --line: 71 85 105;
+  --glass: 15 23 42;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  @apply bg-base text-ink font-sans antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.28);
+  color: rgb(var(--ink));
+}
+
+/* Accessible focus — never removed, styled instead */
+:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Reusable surfaces
+   --------------------------------------------------------------------------- */
+@layer components {
+  .glass {
+    background: rgb(var(--glass) / 0.04);
+    border: 1px solid rgb(var(--line) / 0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .card {
+    @apply glass rounded-2xl;
+    box-shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Animated gradient border — used sparingly on key cards and buttons */
+  .gradient-border {
+    position: relative;
+    background-clip: padding-box;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      130deg,
+      rgba(37, 99, 235, 0.9),
+      rgba(34, 211, 238, 0.9),
+      rgba(139, 92, 246, 0.9),
+      rgba(37, 99, 235, 0.9)
+    );
+    background-size: 300% 300%;
+    animation: border-pan 7s linear infinite;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, #2563eb, #22d3ee 45%, #8b5cf6);
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.28em] text-cyan;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200;
+  }
+  .btn-primary {
+    @apply btn text-white;
+    background: linear-gradient(120deg, #2563eb, #22d3ee);
+    box-shadow: 0 10px 30px -12px rgba(37, 99, 235, 0.65);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px -12px rgba(34, 211, 238, 0.55);
+  }
+  .btn-ghost {
+    @apply btn glass text-ink hover:border-cyan/50;
+  }
+
+  /* Hover light sweep for service cards */
+  .sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .sweep::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(34, 211, 238, 0.14) 50%,
+      transparent 60%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+  }
+  .sweep:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes border-pan {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Subtle technical grid, layered under content */
+.bg-grid {
+  background-image:
+    linear-gradient(rgb(var(--line) / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--line) / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+}
+
+/* Custom cursor is desktop-only; keep native cursor everywhere for a11y,
+   the dot is an additive layer. */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  pointer-events: none;
+  border-radius: 9999px;
+  will-change: transform;
+}
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #22d3ee;
+}
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(34, 211, 238, 0.5);
+  display: grid;
+  place-items: center;
+  font: 600 9px/1 var(--font-mono);
+  color: #22d3ee;
+  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+}
+.cursor-ring[data-mode='link'] {
+  width: 52px;
+  height: 52px;
+  background: rgba(34, 211, 238, 0.08);
+}
+.cursor-ring[data-mode='view'] {
+  width: 68px;
+  height: 68px;
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.6);
+  color: #c4b5fd;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion: the site fully works with animation off.
+   JS also checks the same query before creating GSAP/Lenis instances.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
