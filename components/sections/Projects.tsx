@@ -241,7 +241,7 @@ function ProjectBlock({ project, flip }: { project: Project; flip: boolean }) {
         </ul>
 
         {/* Tech tags, staggered */}
-        <ul className="mt-5 flex flex-wrap gap-2">
+        <ul className="mt-5 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap">
           {project.technologies.map((tech, i) => (
             <motion.li
               key={tech}
@@ -249,7 +249,7 @@ function ProjectBlock({ project, flip }: { project: Project; flip: boolean }) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
-              className="rounded-md border border-line/15 bg-surface/70 px-2.5 py-1 font-mono text-[11px] text-cyan"
+              className="min-w-0 rounded-md border border-line/15 bg-surface/70 px-2.5 py-1 text-center font-mono text-[11px] text-cyan sm:text-left"
             >
               {tech}
             </motion.li>
@@ -284,7 +284,7 @@ function ProjectBlock({ project, flip }: { project: Project; flip: boolean }) {
 /* ------------------------------------------------------------------ */
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-28">
+    <section id="projects" className="relative overflow-x-hidden py-28">
       <div
         data-shared-anchor="projects"
         aria-hidden

@@ -374,7 +374,7 @@ export default function Contact() {
                       ))}
                     </select>
                   </motion.div>
-                  <motion.div {...fieldReveal(4)}>
+                  {/* <motion.div {...fieldReveal(4)}>
                     <label
                       htmlFor="c-budget"
                       className="mb-1.5 block text-xs font-medium text-ink-2"
@@ -384,7 +384,7 @@ export default function Contact() {
                     <select
                       id="c-budget"
                       name="budget"
-                      required
+                      
                       className={inputClass}
                       defaultValue=""
                     >
@@ -397,7 +397,7 @@ export default function Contact() {
                         </option>
                       ))}
                     </select>
-                  </motion.div>
+                  </motion.div> */}
                   <motion.div {...fieldReveal(5)}>
                     <label
                       htmlFor="c-timeline"
