@@ -24,7 +24,7 @@ const STAGE_CONTENT: Record<Stage, { title: string; lines: string[] }> = {
   about: {
     title: 'about.ts',
     lines: [
-      'const years = 2;',
+      'const years = 3;',
       'const focus = "SaaS";',
       'ship(production);',
     ],

@@ -68,14 +68,14 @@ export const navItems = [
 /* About                                                               */
 /* ------------------------------------------------------------------ */
 export const aboutStats: { value: number; suffix: string; label: string }[] = [
-  { value: 2, suffix: "+", label: "Years of Experience" },
+  { value: 3, suffix: "+", label: "Years of Experience" },
   { value: 5, suffix: "+", label: "Production Projects Shipped" },
   { value: 20, suffix: "+", label: "Technologies in Daily Use" },
   { value: 90, suffix: "+", label: "Target Lighthouse Score" },
 ];
 
 export const aboutCards = [
-  "2+ Years of Experience",
+  "3+ Years of Experience",
   "Full-Stack Development",
   "Production-Ready Applications",
   "Responsive and SEO-Friendly Solutions",

@@ -36,7 +36,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 const paragraph1 =
-  "I’m a Full-Stack Web Developer with 2+ years of experience creating responsive websites, SaaS applications, admin dashboards, authentication flows, subscription systems, and API-driven products. I enjoy transforming business requirements into clean, scalable, and user-friendly digital experiences.";
+  "I’m a Full-Stack Web Developer with 3+ years of experience creating responsive websites, SaaS applications, admin dashboards, authentication flows, subscription systems, and API-driven products. I enjoy transforming business requirements into clean, scalable, and user-friendly digital experiences.";
 
 const paragraph2 =
   "My work includes frontend architecture, reusable UI systems, REST API integration, authentication, role-based access, database integration, performance optimization, deployment, and ongoing product improvements.";
